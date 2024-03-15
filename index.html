@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>ToDo List</h1>
+    <form action="">
+      <input type="text" id="input" placeholder="Enter A Task">
+      <button type="submit" class="submit">Add</button>
+      <ul class="list"></ul>
+    </form>
+  </div>
+
+  <script>
+    const form = document.querySelector("form")
+    const input = document.querySelector("input")
+    const list = document.querySelector("ul")
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      toDo();
+      input.value = ""
+    })
+
+    function toDo() {
+      if (input.value === "") {
+        alert('THe Value Is Empty')
+      }
+      else {
+        const value = input.value;
+        const newList = document.createElement('li')
+        newList.textContent = value;
+
+        const deletebtn = document.createElement('Button')
+        deletebtn.textContent = "Delete"
+
+        list.append(newList);
+        newList.append(' ', deletebtn)
+
+      }
+    }
+
+    list.addEventListener('click', function (e) {
+
+      if (e.target.nodeName === "BUTTON") {
+        e.target.closest('LI').remove();
+      }
+
+
+    })
+
+  </script>
+
+  <!-- <div class="container">
+      <form>
+        <input type="text" placeholder="Enter a task" />
+        <button class="submit">Submit</button>
+      </form>
+      <ul class="list"></ul>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+      const list = document.querySelector(".list");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        todo();
+        input.value = "";
+      });
+
+      function todo() {
+        if (input.value === "") {
+          alert("Please enter a task");
+        } else {
+          const value = input.value;
+          const newList = document.createElement("li");
+          newList.textContent = value;
+
+          const deletebtn = document.createElement("button");
+          deletebtn.textContent = "Delete";
+          list.append(newList);
+          newList.append("", deletebtn);
+        }
+      }
+
+      list.addEventListener("click", function (e) {
+        if ((e.target.nodeName = "BUTTON")) {
+          e.target.closest("LI").remove();
+        }
+      });
+    </script> -->
+</body>
+
+</html>
